@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from datetime import timedelta
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h0js_h=oy2w5cu7k-_k^)9a!^ylrt3n)f366fhjsui6pgr@79w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'Infilect.apps.InfilectConfig',
+    'whitenoise.runserver_nostatic',
+    # 'timed_auth_token',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +55,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
+
+
 ]
 
 ROOT_URLCONF = 'Infilect_Weather_API_Assignment.urls'
@@ -135,10 +145,16 @@ REST_FRAMEWORK = {
 
            'rest_framework.permissions.AllowAny',
 
+        
+
          )
 
 }
 
 APPEND_SLASH = True
 
-PASSWORD_RESET_TIMEOUT = 300
+
+
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+
+

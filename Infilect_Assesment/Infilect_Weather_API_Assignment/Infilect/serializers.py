@@ -15,3 +15,15 @@ class City_Weather_DataSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class City_NamesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = City_Weather_Data
+        
+        # Here __all__ serializes all Columns
+
+        # But I listed all for better Understanding.
+
+        fields = '__all__'
+
+

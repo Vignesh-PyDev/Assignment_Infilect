@@ -13,3 +13,10 @@ class City_Weather_Data(models.Model):
 
     def __str__(self):
         return "%s - %s" % (self.group, self.user)
+
+class City_Names(models.Model):
+    city_name = models.CharField(max_length=15)
+    
+    # def __str__(self):
+    #     return "%s - %s" % (self.group, self.user)
+
